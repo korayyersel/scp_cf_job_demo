@@ -6,7 +6,7 @@ var express = require("express");
 var passport = require("passport");
 var xssec = require("@sap/xssec");
 var xsenv = require("@sap/xsenv");
-var schedulerLib = require("../lib/schedulerLib");
+var schedulerLib = require("./lib/schedulerLib");
 
 var app = express();
 passport.use("JWT", new xssec.JWTStrategy(xsenv.getServices({

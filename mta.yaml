@@ -26,5 +26,5 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       service: jobscheduler
-      service-plan: lite
+      service-plan: standard
       enable-xsuaa-support: true

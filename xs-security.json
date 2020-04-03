@@ -5,6 +5,10 @@
 	"scopes": [{
 		"name": "uaa.user",
 		"description": "UAA"
+	}, {
+		"name": "$XSAPPNAME.JobScheduler",
+		"description": "Scope for Job Scheduler",
+		"grant-as-authority-to-apps": ["jobscheduler"]
 	}],
 	"role-templates": [{
 		"name": "Token_Exchange",
