@@ -12,6 +12,9 @@ modules:
          url: ${default-url}
    requires:
       - name: cloudfoundry_job_demo_uaa
+      - name: cloudfoundry_job_demo_jobscheduler
+   properties:
+      SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'
 resources:
   - name: cloudfoundry_job_demo_uaa
     type: org.cloudfoundry.managed-service
@@ -19,3 +22,9 @@ resources:
       service-plan: application
       service: xsuaa
       path: ./xs-security.json 
+  - name: cloudfoundry_job_demo_jobscheduler
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: jobscheduler
+      service-plan: lite
+      enable-xsuaa-support: true

@@ -22,9 +22,9 @@ app.use(
 	})
 );
 
-app.get("/testapi", function (req, res) {
+app.get("/demoJobSync", function (req, res) {
 	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.end("Hello World\n");
+	res.end("Sync Demo Job is called!");
 });
 
 app.listen(port, function () {
