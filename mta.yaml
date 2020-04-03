@@ -1,0 +1,21 @@
+ID: cloudfoundry_job_demo
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: cloudfoundry_job_demo_srv
+   type: nodejs
+   path: srv
+   provides:
+    - name: srv_api
+      properties:
+         url: ${default-url}
+   requires:
+      - name: cloudfoundry_job_demo_uaa
+resources:
+  - name: cloudfoundry_job_demo_uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: application
+      service: xsuaa
+      path: ./xs-security.json 
