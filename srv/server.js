@@ -55,6 +55,25 @@ app.get("/demoJobAsync", function (req, res) {
 	});
 });
 
+app.get("/demoJobWithErrorAsync", function (req, res) {
+	var jobID = req.get("x-sap-job-id");
+	var jobScheduleId = req.get("x-sap-job-schedule-id");
+	var jobRunId = req.get("x-sap-job-run-id");
+
+	var schedulerUpdateRequest = {
+		jobId: jobID,
+		scheduleId: jobScheduleId,
+		runId: jobRunId,
+		data: ""
+	};
+
+	var jobStartPromise = messageJobStart(res);
+	jobStartPromise.then(async function () {
+		await new Promise(resolve => setTimeout(resolve, 25000));
+		schedulerLib.updateJob(schedulerUpdateRequest, false, "Async Demo Job ended with an error. Please check xxx.");
+	});
+});
+
 app.listen(port, function () {
 	console.log("myapp listening on port " + port);
 });
